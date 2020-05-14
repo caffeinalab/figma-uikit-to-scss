@@ -1,0 +1,7 @@
+{
+  "id": "design-system-exporter",
+  "name": "Design System Exporter",
+  "api": "1.0.0",
+  "main": "design-system-exporter.main.js",
+  "ui": "design-system-exporter.html"
+}

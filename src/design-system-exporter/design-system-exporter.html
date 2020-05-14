@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <title>design-system-exporter</title>
+    <!-- Normalize the CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- Include Figma UI CSS -->
+    <link rel="stylesheet" href="https://static.figma.com/api/figma-extension-api-0.0.1.css">
+    <link rel="stylesheet" href="design-system-exporter.ui.css">
+  </head>
+  <body>
+    <form class="grid-container">
+      <header>
+        <span class="TabButton js-tab-button" data-rel="pages">Source</span>
+        <span class="TabButton js-tab-button" data-rel="uikit">UI-Kit</span>
+        <span class="TabButton js-tab-button" data-rel="sass">Sass</span>
+      </header>
+      <main>
+        <div class="Tab js-tab-panel" data-rel="pages">
+          <h4>Select source pages to retrieve UI-kit info from:</h4>
+          <div class="Pages">
+            No pages available.
+          </div>
+        </div>
+        <div class="Tab js-tab-panel" data-rel="uikit">
+          <h4>Nodes selectors</h4>
+          <p>
+            The following settings allow the plugin to retrieve the right nodes to be exported
+            as sass variables.
+            There are three types of groups:
+          </p>
+          <ul>
+            <li>Palette: identify a color variable</li>
+            <li>Typography: identify a text style</li>
+            <li>Components: identify for example a button or an input component</li>
+          </ul>
+          <p>
+            Based on this configuration, the plugin will search nodes with name like <b>@uikit-typo-h1-mobile</b>, i.e. accorging the following format:<br/>
+            {BASE_PREFIX}{SEPARATOR}{GROUP_PREFIX}{SEPARATOR}{variable_name}{SEPARATOR}{mobile/tablet/desktop}<br/>
+          </p>
+          <h5>Base prefix (to identify a uikit element)</h5>
+          <input type="text" name="uikit_prefix" value="@uikit">
+          <h5>Palette group prefix</h5>
+          <p><small>The plugin will export the first fill color of the node</small></p>
+          <input type="text" name="uikit_palette" value="palette">
+          <h5>Typography group prefix</h5>
+          <p><small>The plugin will export `font-family`, `font-size`, `font-style`, `font-weight`, `line-height`, `letter-spacing`, `text-transform`, `color` of the node </small></p>
+          <input type="text" name="uikit_typos" value="typo">
+          <h5>Components group prefix</h5>
+          <p><small>The plugin will export `opacity`, `padding`, `border`, `border-radius`, `background-color` of the node and the `color`(first fill color) of the first visible children</small></p>
+          <input type="text" name="uikit_components" value="component">
+          <h5>Prefixes separator</h5>
+          <p><small>The separator used to concatenate nodes selectors (e.g. @uikit-typo-h1-mobile)</small></p>
+          <input type="text" name="uikit_separator" value="-">
+        </div>
+        <div class="Tab js-tab-panel" data-rel="sass">
+          <h4>Sass maps names</h4>
+          <p>
+            Choose the variable names (without $) used by the exporter to generate the uikit sass file.
+            <br/>
+            <b>e.g. if you choose 'color' as palette variable the plugin will export `$colors: ( "white": "#FFFFFF", ... )`</b>
+          </p>
+          <h5>Palette</h5>
+          <input type="text" name="sass_palette" value="colors">
+          <h5>Typography</h5>
+          <input type="text" name="sass_typos" value="typographyVariables">
+          <h5>Components</h5>
+          <input type="text" name="sass_components" value="componentsVariables">
+        </div>
+      </main>
+      <footer>
+        <div class="Footer_input">
+          <h5>Filename</h5>
+          <input type="text" name="uikit_filename" value="uikit.sass">
+        </div>
+        <button type="submit">Export</button>
+      </footer>
+    </form>
+    <script src="design-system-exporter.ui.js"></script>
+  </body>
+</html>
