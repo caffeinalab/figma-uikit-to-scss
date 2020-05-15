@@ -107,9 +107,9 @@ function getBorderRadius(data){
 
 function getPadding(data){
   if( data.verticalPadding === data.horizontalPadding) {
-    return `rem(${data.verticalPadding}px)`
+    return `rem(${data.verticalPadding || 0}px)`
   }else{
-    return `rem(${data.verticalPadding}px ${data.horizontalPadding}px)`
+    return `rem(${data.verticalPadding || 0}px ${data.horizontalPadding || 0}px)`
   } 
 }
 

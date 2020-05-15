@@ -34,9 +34,17 @@ export default class BaseProcessor{
     return data
   }
 
-  removeEqualProperties(base, current){
+  removeEqualProperties(data, current, breakpoints = false){
+    let baseStyle = {}
+    if(breakpoints){
+      breakpoints.forEach(breakpoint => {
+        baseStyle = Object.assign(baseStyle, data[breakpoint] || {})
+      })
+    }else{
+      baseStyle = data
+    }
     Object.keys(current).forEach(propertyName => {
-      if (current[propertyName] === base[propertyName]) {
+      if (baseStyle && current[propertyName] === baseStyle[propertyName]) {
         delete current[propertyName]
       }
     })
@@ -45,21 +53,29 @@ export default class BaseProcessor{
 
   removeDuplicates(data) {
     Object.keys(data).forEach(key => {
-      if(uiBreakPoints.includes(key)){
-        if(uiBreakPoints[0] !== key){
-          data[key] = this.removeEqualProperties(data[uiBreakPoints[0]], data[key])
-        }
-      }else if(componentStates.includes(key)){
+      if(componentStates.includes(key)){
         data[key] = this.removeDuplicates(data[key])
-        if(componentStates[0] !== key && data[componentStates[0]]){
+        const index = componentStates.findIndex(state => key === state)
+        if(index > 0){
+          let baseStyle = {}
           uiBreakPoints.forEach(breakpoint => {
-            if(data[key][breakpoint] && data[componentStates[0]][breakpoint]){
+            baseStyle = Object.assign(baseStyle, data[componentStates[0]][breakpoint] || {})
+            if(data[key][breakpoint]){
               data[key][breakpoint] = this.removeEqualProperties(
-                data[componentStates[0]][breakpoint],
+                baseStyle,
                 data[key][breakpoint]
               )
             }
           })
+        }
+      }else if(uiBreakPoints.includes(key)){
+        const index = uiBreakPoints.findIndex(breakpoint => key === breakpoint)
+        if(index > 0){
+          data[key] = this.removeEqualProperties(
+            data,
+            data[key],
+            uiBreakPoints.slice(0, index)
+          )
         }
       }else if(typeof data[key] === 'object'){
         data[key] = this.removeDuplicates(data[key])
@@ -68,24 +84,6 @@ export default class BaseProcessor{
     
     return data
   }
-
-  // removeDuplicates() {
-  //   Object.keys(this.data).forEach(tagName => {
-  //     let baseStyle
-  //     uiBreakPoints.forEach((breakpoint, i) => {
-  //       const currentStyle = this.data[tagName][breakpoint] || {}
-  //       if(i === 0){
-  //         baseStyle = currentStyle
-  //       }else{
-  //         this.data[tagName][breakpoint] = this.removeEqualProperties(
-  //           baseStyle,
-  //           currentStyle
-  //         )
-  //       }
-  //     })
-  //   })
-  // }
-
   getData(){
     return this.data
   }
