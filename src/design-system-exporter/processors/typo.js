@@ -7,26 +7,19 @@ const {
   getFontStyle,
   getTextTransform,
   getColor,
-  getOpacity,
 } = normalizeValues
 
 export default class TypoProcessor extends BaseProcessor{  
-  processNode({name, breakpoint}, node){
-    if (!this.data[name]) {
-      this.data[name] = {}
-    }
-
-    if (!this.data[name][breakpoint]) {
-      this.data[name][breakpoint] = {}
-    }
-
-    this.data[name][breakpoint]['font-family'] = `'${node.fontName.family}'`
-    this.data[name][breakpoint]['font-size'] = `rem(${node.fontSize}px)`
-    this.data[name][breakpoint]['font-style'] = getFontStyle(node.fontName.style)
-    this.data[name][breakpoint]['font-weight'] = getFontWeight(node.fontName.style)
-    this.data[name][breakpoint]['line-height'] = getValue(node.lineHeight, 1.2)
-    this.data[name][breakpoint]['letter-spacing'] = getValue(node.letterSpacing, 0)
-    this.data[name][breakpoint]['text-transform'] = getTextTransform(node.textCase)
-    this.data[name][breakpoint]['color'] = getColor(node.fills)
+  processNode(node){
+    const data = {}
+    data['font-family'] = `'${node.fontName.family}'`
+    data['font-size'] = `rem(${node.fontSize}px)`
+    data['font-style'] = getFontStyle(node.fontName.style)
+    data['font-weight'] = getFontWeight(node.fontName.style)
+    data['line-height'] = getValue(node.lineHeight, 1.2)
+    data['letter-spacing'] = getValue(node.letterSpacing, 0)
+    data['text-transform'] = getTextTransform(node.textCase)
+    data['color'] = getColor(node.fills)
+    return data
   }
 }

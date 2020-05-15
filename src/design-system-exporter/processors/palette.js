@@ -4,7 +4,7 @@ import normalizeValues from '../utils/normalize-values'
 const { getColor } = normalizeValues
 
 export default class PaletteProcessor extends BaseProcessor{
-  processNode({name}, node){
-    this.data[name] = getColor(node.fills)
+  processNode(node){
+    return getColor(node.fills)
   }
 }

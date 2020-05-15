@@ -1,5 +1,5 @@
 const defaultSettings = {
-  'uikit_filename': 'uikit.sass',
+  'uikit_filename': 'uikit.scss',
   'uikit_prefix': '@uikit',
   'uikit_separator': '-',
   'uikit_palette': 'palette',
