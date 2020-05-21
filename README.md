@@ -1,6 +1,6 @@
 # UIKIT to SCSS
 
-This is a Figma Plugin that allows you to export a sass file with the styles of certain nodes, very useful for design systems and ui-kit.
+This is a Figma Plugin that allows you to export a scss file with the styles of certain nodes, very useful for design systems and ui-kit.
 
 ![Preview](/preview.png)
 
