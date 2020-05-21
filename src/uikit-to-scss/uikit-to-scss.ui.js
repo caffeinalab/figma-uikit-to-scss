@@ -1,5 +1,5 @@
 import UI from './ui'
-
+import {sendToMain} from './utils/communication'
 const ui = new UI({el: document.body})
 
 /* The UI script */
@@ -23,7 +23,8 @@ onmessage = event => {
       break
     case 'saveFile':
       saveFile(message.data)
+      sendToMain({ type: 'quit' })
   }
 }
   
-parent.postMessage({ pluginMessage: { type: 'ready' } }, '*');
+sendToMain({ type: 'ready' })

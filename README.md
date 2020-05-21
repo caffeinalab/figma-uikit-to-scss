@@ -1,4 +1,4 @@
-# Design System Exporter
+# UIKIT to SCSS
 
 This is a Figma Plugin that allows you to export a sass file with the styles of certain nodes, very useful for design systems and ui-kit.
 
@@ -53,6 +53,16 @@ The plugin will export:
 * `background-color`
 * `color` (based on the first fill color of the first visible children)
 
+#### Referenced child
+
+If you deal with a styleless component (e.g. a node group), you can create a reference to a child node that you want to use as styles source.
+For example:
+```
+
+- @uikit-component-button // Parent Node
+  -- @uikit-ref           // Child node
+```
+
 ## Export file
 
 In the exported file, according to your figma file and the names you chose in the `SCSS` tab, you will have something like this:
@@ -104,8 +114,8 @@ You can check how to use the exported file [here](/sass-mixins.md).
 This plugin is based on [fika](https://github.com/mattdesl/fika), so you need to install it `npm install @mattdesl/fika -g`
 
 ### Environment
-To start the dev environment you need to move to the plugin folder and use this command `fika design-system-exporter`.
+To start the dev environment you need to move to the plugin folder and use this command `fika uikit-to-scss`.
 
 ### Add plugin to figma
 
-Once you've generated a ./dist folder, open a project in Figma Desktop, select Menu > Plugins > Development > New Plugin. Click "Choose a manifest.json" and find the manifest.json file in ./dist/design-system-exporter/manifest.json. (notice dist not src).
+Once you've generated a ./dist folder, open a project in Figma Desktop, select Menu > Plugins > Development > New Plugin. Click "Choose a manifest.json" and find the manifest.json file in ./dist/uikit-to-scss/manifest.json. (notice dist not src).

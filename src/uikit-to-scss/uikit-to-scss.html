@@ -1,11 +1,11 @@
 <html>
   <head>
-    <title>design-system-exporter</title>
+    <title>uikit-to-scss</title>
     <!-- Normalize the CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <!-- Include Figma UI CSS -->
     <link rel="stylesheet" href="https://static.figma.com/api/figma-extension-api-0.0.1.css">
-    <link rel="stylesheet" href="design-system-exporter.ui.css">
+    <link rel="stylesheet" href="uikit-to-scss.ui.css">
   </head>
   <body>
     <form class="grid-container">
@@ -48,6 +48,15 @@
           <h5>Components group prefix</h5>
           <p><small>The plugin will export `opacity`, `padding`, `border`, `border-radius`, `background-color` of the node and the `color`(first fill color) of the first visible children</small></p>
           <input type="text" name="uikit_components" value="component">
+          <h5>Child reference prefix</h5>
+          <p>
+            <small>
+            This selector will be used in components to find the child node that you want to use as styles source. It is useful for example when the node declared as a component is styleless (e.g. a node group).
+            <br/>- @uikit-component-button
+            <br/>-- @uikit-ref
+            </small>
+          </p>
+          <input type="text" name="uikit_ref_node" value="ref">
           <h5>Prefixes separator</h5>
           <p><small>The separator used to concatenate nodes selectors (e.g. @uikit-typo-h1-mobile)</small></p>
           <input type="text" name="uikit_separator" value="-">
@@ -75,6 +84,6 @@
         <button type="submit">Export</button>
       </footer>
     </form>
-    <script src="design-system-exporter.ui.js"></script>
+    <script src="uikit-to-scss.ui.js"></script>
   </body>
 </html>

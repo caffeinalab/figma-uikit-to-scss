@@ -5,6 +5,7 @@ const defaultSettings = {
   'uikit_palette': 'palette',
   'uikit_typos': 'typo',
   'uikit_components': 'component',
+  'uikit_ref_node': 'ref',
   'sass_palette': 'colors',
   'sass_typo': 'typographyVariables',
   'sass_components': 'componentsVariables',
@@ -12,7 +13,7 @@ const defaultSettings = {
 
 export const getSettings = async function(){
   try{
-    return await figma.clientStorage.getAsync('design-system-exporter')
+    return await figma.clientStorage.getAsync('uikit-to-scss')
   } catch(err) {
     return defaultSettings
   }
@@ -20,7 +21,7 @@ export const getSettings = async function(){
 
 export const saveSettings = async function(settings){
   try{
-    await figma.clientStorage.setAsync('design-system-exporter', settings)
+    await figma.clientStorage.setAsync('uikit-to-scss', settings)
   } catch(err) {
     console.log('[DesignSystemExporter] Impossible to save settings', err)
   }

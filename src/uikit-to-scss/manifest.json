@@ -1,0 +1,7 @@
+{
+  "id": "843123176259183001",
+  "name": "UIKIT to SCSS",
+  "api": "1.0.0",
+  "main": "uikit-to-scss.main.js",
+  "ui": "uikit-to-scss.html"
+}

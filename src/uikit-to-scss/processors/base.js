@@ -6,11 +6,16 @@ export default class BaseProcessor{
     this.type = type
     this.data = {}
     this.selector = this.getSelector()
+    this.refSelector = this.getRefSelector()
   }
 
   getSelector(){
     const { uikit_prefix, uikit_separator } = this.settings
     return uikit_prefix + uikit_separator + this.settings[`uikit_${this.type}`] + uikit_separator
+  }
+  getRefSelector(){
+    const { uikit_prefix, uikit_separator, uikit_ref_node } = this.settings
+    return uikit_prefix + uikit_separator + uikit_ref_node
   }
 
   splitName(name) {
@@ -59,7 +64,7 @@ export default class BaseProcessor{
         if(index > 0){
           let baseStyle = {}
           uiBreakPoints.forEach(breakpoint => {
-            baseStyle = Object.assign(baseStyle, data[componentStates[0]][breakpoint] || {})
+            baseStyle = Object.assign(baseStyle, data[componentStates[0]] && data[componentStates[0]][breakpoint] ? data[componentStates[0]][breakpoint] : {})
             if(data[key][breakpoint]){
               data[key][breakpoint] = this.removeEqualProperties(
                 baseStyle,
@@ -98,7 +103,7 @@ export default class BaseProcessor{
       return
     }
     const {name, breakpoint, state} = this.splitName(node.name)
-    const data = this.processNode(node)
+    const data = this.processNode(node, this.refSelector)
     
     if(!this.data[name]) this.data[name] = {}
 

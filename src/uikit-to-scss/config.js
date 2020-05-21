@@ -3,7 +3,16 @@ import PaletteProcessor from './processors/palette'
 import ComponentProcessor from './processors/component'
 
 export const uiBreakPoints = ['mobile', 'tablet', 'desktop']
-export const componentStates = ['default', 'hover', 'disabled']
+export const componentStates = [
+  'default',
+  'hover',
+  'disabled',
+  'focus',
+  'value',
+  'placeholder',
+  'success',
+  'error'
+]
 
 export const processors = {
   palette: PaletteProcessor,
