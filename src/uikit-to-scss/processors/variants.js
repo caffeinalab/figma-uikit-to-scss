@@ -3,11 +3,11 @@ import normalizeValues from '../utils/normalize-values'
 import traverseNode from '../utils/traverse-node'
 const { getColor, getBorder, getBorderRadius, getPadding, getOpacity } = normalizeValues
 
-export default class VariantProcessor extends BaseProcessor{
+export default class VariantsProcessor extends BaseProcessor{
   processNode(node, refSelector){
-    // const data = {}
+    console.log('variants init')
+    const data = {}
     const refNode = traverseNode(node, refSelector) || node
-    const data = []
     let cleanNodes = []
     let reducedData = []
     const attributes = [
@@ -59,13 +59,17 @@ export default class VariantProcessor extends BaseProcessor{
 
     cleanNodes.map(({name, node}) => {
       attributes.forEach(element => {
-        reducedData.push({
-          [name + '-' + element.name]: element.value(node)
-        })
+        data[name + '-' + element.name] = element.value(node)
+        // reducedData.push({
+        //   [name + '-' + element.name]: element.value(node)
+        // })
       });
     })
-    console.log(reducedData)
+    // `${name}-${element.name}: ${element.value(node)}`
+    // console.log(reducedData)
+
+    console.log(data)
     
-    return reducedData
+    return data
   }
 }

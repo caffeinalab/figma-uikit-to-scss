@@ -148,6 +148,10 @@ footer button{
   visibility: hidden;
 }
 
+.Check.is-visible {
+  visibility: visible;
+}
+
 .Check_indicator{
   display: inline-block;
   margin-right: 4px;

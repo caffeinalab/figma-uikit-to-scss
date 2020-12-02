@@ -10,12 +10,25 @@ export default class Exporter{
     this.initProcessors()
     this.process()
     this.downloadFile()
+
+    console.log(this.settings)
   }
 
   initProcessors(){
-    this.processorsTypes.forEach(type => {
-      this.processors[type] = new processors[type](type, this.settings)
-    })
+    this.processors.palette = new processors.palette('palette', this.settings)
+    this.processors.typos = new processors.typos('typos', this.settings)
+    this.processors.components = new processors.components('components', this.settings)
+
+    if (this.settings.variants) {
+      this.processors.variants = new processors.variants('variants', this.settings) 
+    } else {
+      this.processorsTypes = this.processorsTypes.filter(type => type !== 'variants')
+      console.log(this.processorsTypes)
+    }
+
+    // this.processorsTypes.forEach(type => {
+    //   this.processors[type] = new processors[type](type, this.settings)
+    // })
   }
 
   process(){
@@ -24,7 +37,13 @@ export default class Exporter{
 
     pages.forEach(page => {
       const pageNodes = page.findAll(node => node.name.indexOf(uikit_prefix) >= 0)
-      this.processorsTypes.forEach(type => this.processors[type].addNodes(pageNodes))
+      this.processorsTypes.forEach(type => {
+        try {
+          this.processors[type].addNodes(pageNodes)
+        } catch (err) {
+          console.log(err)
+        }
+      })
     });
   }
 

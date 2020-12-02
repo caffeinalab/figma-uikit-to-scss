@@ -61,6 +61,7 @@ export default class UI extends Component{
     for (let i = 0, l = pagesSelected.length; i < l;  i++)   {
       data.pages.push(pagesSelected[i].value)
     }
+
     sendToMain({type: 'export', data})
   }
 }
