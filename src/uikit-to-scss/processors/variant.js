@@ -66,22 +66,6 @@ export default class VariantProcessor extends BaseProcessor{
     })
     console.log(reducedData)
     
-    // if(node.children && node.children.length){
-    //   const visibleChild = node.children.find(n => n.visible && n.fills.length > 0)
-    //   // console.log(visibleChild.name)
-    //   if(visibleChild){
-    //     data['color'] = getColor(visibleChild.fills)
-    //   }
-    // }
-    
-    // data['opacity'] = Math.round(refNode.opacity * 100) / 100
-    // data['padding'] = getPadding(refNode)
-    // data['border'] = getBorder(refNode)
-    // data['border-radius'] = getBorderRadius(refNode)
-    // data['background-color'] = getColor(refNode.backgrounds)
-    
-    // console.log({data})
-    
     return reducedData
   }
 }
