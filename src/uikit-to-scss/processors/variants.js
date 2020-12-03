@@ -5,11 +5,9 @@ const { getColor, getBorder, getBorderRadius, getPadding, getOpacity } = normali
 
 export default class VariantsProcessor extends BaseProcessor{
   processNode(node, refSelector){
-    console.log('variants init')
     const data = {}
     const refNode = traverseNode(node, refSelector) || node
     let cleanNodes = []
-    let reducedData = []
     const attributes = [
       {
         name: 'padding',
@@ -60,15 +58,8 @@ export default class VariantsProcessor extends BaseProcessor{
     cleanNodes.map(({name, node}) => {
       attributes.forEach(element => {
         data[name + '-' + element.name] = element.value(node)
-        // reducedData.push({
-        //   [name + '-' + element.name]: element.value(node)
-        // })
       });
     })
-    // `${name}-${element.name}: ${element.value(node)}`
-    // console.log(reducedData)
-
-    console.log(data)
     
     return data
   }

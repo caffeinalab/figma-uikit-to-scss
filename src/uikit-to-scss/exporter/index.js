@@ -10,8 +10,6 @@ export default class Exporter{
     this.initProcessors()
     this.process()
     this.downloadFile()
-
-    console.log(this.settings)
   }
 
   initProcessors(){
@@ -23,7 +21,6 @@ export default class Exporter{
       this.processors.variants = new processors.variants('variants', this.settings) 
     } else {
       this.processorsTypes = this.processorsTypes.filter(type => type !== 'variants')
-      console.log(this.processorsTypes)
     }
 
     // this.processorsTypes.forEach(type => {
