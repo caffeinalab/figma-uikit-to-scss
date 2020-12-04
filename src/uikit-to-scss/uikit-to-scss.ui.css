@@ -166,3 +166,13 @@ footer button{
 .Check:checked + .Check_indicator {
   background-color: #000;
 }
+
+.Check-variants + input {
+  pointer-events: none;
+  opacity: .6;
+}
+
+.Check-variants:checked + input {
+  pointer-events: all;
+  opacity: 1;
+}

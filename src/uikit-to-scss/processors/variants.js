@@ -1,7 +1,7 @@
 import BaseProcessor from './base'
 import normalizeValues from '../utils/normalize-values'
 import traverseNode from '../utils/traverse-node'
-const { getColor, getBorder, getBorderRadius, getPadding, getOpacity } = normalizeValues
+const { getColor, getBorder, getBorderRadius, getPadding } = normalizeValues
 
 export default class VariantsProcessor extends BaseProcessor{
   processNode(node, refSelector){
@@ -37,6 +37,10 @@ export default class VariantsProcessor extends BaseProcessor{
         }
       }
     ]
+
+    // @fil
+    // Qui 'pulisco' il nome della variante che vado a leggere dal foglio di figma
+    // ES "Mobile, Secondary, Disabled" -> "mobile-secondary-disabled"
     
     refNode.children.forEach(childNode => {
       const { name } = childNode

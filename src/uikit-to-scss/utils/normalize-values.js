@@ -106,6 +106,8 @@ function getBorderRadius(data){
 }
 
 function getPadding(data){
+  // @fil
+  // Faccio tornare tutti e quattro i valori senza fare i vari if per raggrupparli (top/bottom, left/right)
   return `rem(${data.paddingTop || 0}px ${data.paddingRight || 0}px ${data.paddingBottom || 0}px ${data.paddingLeft || 0}px)`
 }
 
