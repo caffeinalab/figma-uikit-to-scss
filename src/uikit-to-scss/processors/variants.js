@@ -37,10 +37,6 @@ export default class VariantsProcessor extends BaseProcessor{
         }
       }
     ]
-
-    // @fil
-    // Qui 'pulisco' il nome della variante che vado a leggere dal foglio di figma
-    // ES "Mobile, Secondary, Disabled" -> "mobile-secondary-disabled"
     
     refNode.children.forEach(childNode => {
       const { name } = childNode
