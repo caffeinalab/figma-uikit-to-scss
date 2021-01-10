@@ -23,12 +23,6 @@
         </div>
         <div class="Tab js-tab-panel" data-rel="uikit">
 
-          <h2 style="display: inline;">Support Variants </h2>
-          <input type="checkbox" class="Check is-visible Check-variants" name="variants" value="1" style="display: inline;">
-          <input type="text" name="uikit_variants" value="variants">
-          <br>
-          <br>
-
           <h4>Nodes selectors</h4>
           <p>
             The following settings allow the plugin to retrieve the right nodes to be exported
@@ -52,9 +46,9 @@
           <h5>Typography group prefix</h5>
           <p><small>The plugin will export `font-family`, `font-size`, `font-style`, `font-weight`, `line-height`, `letter-spacing`, `text-transform`, `color` of the node </small></p>
           <input type="text" name="uikit_typos" value="typo">
-          <h5>Components group prefix</h5>
+          <h5>Variants group prefix</h5>
           <p><small>The plugin will export `opacity`, `padding`, `border`, `border-radius`, `background-color` of the node and the `color`(first fill color) of the first visible children</small></p>
-          <input type="text" name="uikit_components" value="component">
+          <input type="text" name="uikit_variants" value="variants">
           <h5>Child reference prefix</h5>
           <p>
             <small>
@@ -67,6 +61,18 @@
           <h5>Prefixes separator</h5>
           <p><small>The separator used to concatenate nodes selectors (e.g. @uikit-typo-h1-mobile)</small></p>
           <input type="text" name="uikit_separator" value="-">
+
+          <h2 style="display: inline;">Support Components: </h2>
+          <input type="checkbox" class="Check is-visible Check-components" name="components" value="1" style="display: inline;">
+          <input type="text" name="uikit_components" value="components">
+          <p>
+            <small>
+              Check this box to use the old Components methods instead of the Variants
+            </small>
+          </p>
+          <br>
+          <br>
+
         </div>
         <div class="Tab js-tab-panel" data-rel="sass">
           <h4>Scss maps names</h4>

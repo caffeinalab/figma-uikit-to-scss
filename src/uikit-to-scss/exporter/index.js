@@ -13,19 +13,18 @@ export default class Exporter{
   }
 
   initProcessors(){
-    // @fil
     // Qui vengono istanziati i vari processori, ho tolto il ciclo per evitare di eseguire il blocco if 4 volte
-
     this.processors.palette = new processors.palette('palette', this.settings)
     this.processors.typos = new processors.typos('typos', this.settings)
-    this.processors.components = new processors.components('components', this.settings)
-
-    if (this.settings.variants) {
-      this.processors.variants = new processors.variants('variants', this.settings) 
-    } else {
-      // Se le variants non sono spuntate, elimino il tipo dalla lista dei tipi di processore così da non far processare le pagine
-      // ed evitare l'errore
+     
+    if (this.settings.components) {
+      this.processors.components = new processors.components('components', this.settings)
       this.processorsTypes = this.processorsTypes.filter(type => type !== 'variants')
+    } else {
+      // Se i components non sono spuntati, elimino il tipo dalla lista dei tipi di processore così da non far processare le pagine
+      // ed evitare l'errore
+      this.processors.variants = new processors.variants('variants', this.settings)
+      this.processorsTypes = this.processorsTypes.filter(type => type !== 'components')
     }
   }
 

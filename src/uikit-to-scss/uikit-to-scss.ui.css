@@ -167,12 +167,12 @@ footer button{
   background-color: #000;
 }
 
-.Check-variants + input {
+.Check-components + input {
   pointer-events: none;
   opacity: .6;
 }
 
-.Check-variants:checked + input {
+.Check-components:checked + input {
   pointer-events: all;
   opacity: 1;
 }
