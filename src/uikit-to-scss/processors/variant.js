@@ -3,7 +3,7 @@ import normalizeValues from '../utils/normalize-values'
 import traverseNode from '../utils/traverse-node'
 const { getColor, getBorder, getBorderRadius, getPadding } = normalizeValues
 
-export default class VariantsProcessor extends BaseProcessor{
+export default class VariantProcessor extends BaseProcessor{
   processNode(node, refSelector){
     const data = {}
     const refNode = traverseNode(node, refSelector) || node

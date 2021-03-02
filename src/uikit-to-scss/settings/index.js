@@ -5,6 +5,7 @@ const defaultSettings = {
   'uikit_palette': 'palette',
   'uikit_typos': 'typo',
   'uikit_components': 'component',
+  'uikit_components_type': 'variants',
   'uikit_ref_node': 'ref',
   'sass_palette': 'colors',
   'sass_typo': 'typographyVariables',

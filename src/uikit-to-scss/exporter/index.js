@@ -6,26 +6,17 @@ export default class Exporter{
   constructor(settings){
     this.processors = {}
     this.settings = settings
-    this.processorsTypes = Object.keys(processors)
+    this.processorsTypes = Object.keys(processors).filter(key => key !== 'variants')
     this.initProcessors()
     this.process()
     this.downloadFile()
   }
 
   initProcessors(){
-    // Qui vengono istanziati i vari processori, ho tolto il ciclo per evitare di eseguire il blocco if 4 volte
+    const { uikit_components_type: componentsType } = this.settings
     this.processors.palette = new processors.palette('palette', this.settings)
     this.processors.typos = new processors.typos('typos', this.settings)
-     
-    if (this.settings.components) {
-      this.processors.components = new processors.components('components', this.settings)
-      this.processorsTypes = this.processorsTypes.filter(type => type !== 'variants')
-    } else {
-      // Se i components non sono spuntati, elimino il tipo dalla lista dei tipi di processore così da non far processare le pagine
-      // ed evitare l'errore
-      this.processors.variants = new processors.variants('variants', this.settings)
-      this.processorsTypes = this.processorsTypes.filter(type => type !== 'components')
-    }
+    this.processors.components = new processors[componentsType]('components', this.settings)
   }
 
   process(){

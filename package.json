@@ -2,7 +2,9 @@
   "name": "uikit-to-scss",
   "version": "1.0.0",
   "description": "A Figma plugin to export a scss file from a figma design",
-  "scripts": {},
+  "scripts": {
+    "dev": "fika uikit-to-scss"
+  },
   "keywords": [],
   "browserslist": [
     "last 1 Chrome version"
@@ -15,6 +17,7 @@
     "@babel/core": "^7.12.3",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
+    "@mattdesl/fika": "^1.1.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",

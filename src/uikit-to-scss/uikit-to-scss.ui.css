@@ -42,7 +42,7 @@ h4{
 }
 
 h5{
-  margin: 12px 0;
+  margin: 20px 0 12px;
 }
 
 p, li{
@@ -175,4 +175,26 @@ footer button{
 .Check-components:checked + input {
   pointer-events: all;
   opacity: 1;
+}
+
+.Radio {
+  display: flex;
+  height: 14px;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+
+.Radio > * {
+  flex: 0;
+}
+
+.Radio > label {
+  margin: 0 20px 0 8px;
+}
+
+.Radio > input {
+  height: 14px;
+  flex-basis: 14px;
+  flex-shrink: 0;
 }

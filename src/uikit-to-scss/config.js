@@ -1,7 +1,7 @@
 import TypoProcessor from './processors/typo'
 import PaletteProcessor from './processors/palette'
 import ComponentProcessor from './processors/component'
-import VariantsProcessor from './processors/variants'
+import VariantProcessor from './processors/variant'
 
 export const uiBreakPoints = ['mobile', 'tablet', 'desktop']
 export const componentStates = [
@@ -19,11 +19,10 @@ export const processors = {
   palette: PaletteProcessor,
   typos: TypoProcessor,
   components: ComponentProcessor,
-  variants: VariantsProcessor
+  variants: VariantProcessor
 }
 
 export const exportDependencies = {
   typos: 'palette',
-  components: 'palette',
-  variants: 'palette'
+  components: 'palette'
 }

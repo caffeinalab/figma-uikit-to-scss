@@ -46,9 +46,17 @@
           <h5>Typography group prefix</h5>
           <p><small>The plugin will export `font-family`, `font-size`, `font-style`, `font-weight`, `line-height`, `letter-spacing`, `text-transform`, `color` of the node </small></p>
           <input type="text" name="uikit_typos" value="typo">
-          <h5>Variants group prefix</h5>
+          <h5>Components group type</h5>
+          <p><small>The plugin handles components according to Figma's variants approach by default, but you can also choose the "legacy" option if variants are out of your workflow</small></p>
+          <div class="Radio">
+            <input id="uikit_components_type-variants" type="radio" name="uikit_components_type" value="variants" checked>
+            <label for="uikit_components_type-variants">Variants</label>
+            <input id="uikit_components_type-legacy" type="radio" name="uikit_components_type" value="components">
+            <label for="uikit_components_type-legacy">Legacy</label>
+          </div>
+          <h5>Components group prefix</h5>
           <p><small>The plugin will export `opacity`, `padding`, `border`, `border-radius`, `background-color` of the node and the `color`(first fill color) of the first visible children</small></p>
-          <input type="text" name="uikit_variants" value="variants">
+          <input type="text" name="uikit_components" value="components">
           <h5>Child reference prefix</h5>
           <p>
             <small>
@@ -61,18 +69,6 @@
           <h5>Prefixes separator</h5>
           <p><small>The separator used to concatenate nodes selectors (e.g. @uikit-typo-h1-mobile)</small></p>
           <input type="text" name="uikit_separator" value="-">
-
-          <h2 style="display: inline;">Support Components: </h2>
-          <input type="checkbox" class="Check is-visible Check-components" name="components" value="1" style="display: inline;">
-          <input type="text" name="uikit_components" value="components">
-          <p>
-            <small>
-              Check this box to use the old Components methods instead of the Variants
-            </small>
-          </p>
-          <br>
-          <br>
-
         </div>
         <div class="Tab js-tab-panel" data-rel="sass">
           <h4>Scss maps names</h4>
@@ -87,8 +83,6 @@
           <input type="text" name="sass_typos" value="typographyVariables">
           <h5>Components</h5>
           <input type="text" name="sass_components" value="componentsVariables">
-          <h5>Variants</h5>
-          <input type="text" name="sass_variants" value="variantsVariables">
         </div>
       </main>
       <footer>
