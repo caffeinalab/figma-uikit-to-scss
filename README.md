@@ -6,16 +6,29 @@ This is a Figma Plugin that allows you to export a scss file with the styles of 
 
 You can easily setup the identifiers to retrieve the right nodes to be exported
 as sass variables.
-There are three types of groups:
+There are three types of group:
 
-* Palette: identify a color variable
-* Typography: identify a text style
-* Components: identify for example a button or an input component
+* Palette: it identifies a color variable
+* Typography: it identifies a text style
+* Component: it identifies the style of, for example, a button or an input component
 
 
 Based on the configuration, the plugin will search nodes with name like **@uikit-typo-h1-mobile**, i.e. according the following format:
 
-{BASE_PREFIX}{SEPARATOR}{GROUP_PREFIX}{SEPARATOR}{variable_name}{SEPARATOR}{mobile/tablet/desktop}
+{BASE_PREFIX}{SEPARATOR}{GROUP_PREFIX}{SEPARATOR}>{variable_name}{SEPARATOR}{mobile/tablet/desktop}
+
+>### ⚠️ Warning:
+>The plugin reserves the following keywords for internal use:
+>- *default*
+>- *hover*
+>- *disabled*
+>- *focus*
+>- *value*
+>- *placeholder*
+>- *success*
+>- *error*
+>
+>More precisely, the plugin will consider them as status-oriented suffixes, so using them as a standalone `variable_name` might bring you to unexpected behaviors. Just for instance, a color variable named `@uikit-palette-success` won't work as expected because the `success` suffix will be interpreted as the status of a missing base `variable_name`. In those cases, please use something like `@uikit-palette-status-success` instead.
 
 ## Groups
 
@@ -52,7 +65,6 @@ The plugin will export:
 * `border-radius`
 * `background-color`
 * `color` (based on the first fill color of the first visible children)
-
 #### Referenced child
 
 If you deal with a styleless component (e.g. a node group), you can create a reference to a child node that you want to use as styles source.
@@ -62,6 +74,10 @@ For example:
 - @uikit-component-button // Parent Node
   -- @uikit-ref           // Child node
 ```
+
+#### Variants support (beta)
+
+If the recent *Figma's Variants* are part of your components design workflow, you can also choose the `Components group type`'s "*Variants*" option to let the plugin to support them. Behind the scenes, it will enable the usage of a different processor that handles the retrieving of the same properties listed above according to variants system.
 
 ## Export file
 

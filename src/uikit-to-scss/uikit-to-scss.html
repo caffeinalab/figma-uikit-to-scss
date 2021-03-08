@@ -47,12 +47,12 @@
           <p><small>The plugin will export `font-family`, `font-size`, `font-style`, `font-weight`, `line-height`, `letter-spacing`, `text-transform`, `color` of the node </small></p>
           <input type="text" name="uikit_typos" value="typo">
           <h5>Components group type</h5>
-          <p><small>The plugin handles components according to Figma's variants approach by default, but you can also choose the "legacy" option if variants are out of your workflow</small></p>
+          <p><small>The plugin supports the Figma's variants too. Check the related option if you use them in your components design workflow.</small></p>
           <div class="Radio">
-            <input id="uikit_components_type-variants" type="radio" name="uikit_components_type" value="variants" checked>
-            <label for="uikit_components_type-variants">Variants</label>
-            <input id="uikit_components_type-legacy" type="radio" name="uikit_components_type" value="components">
-            <label for="uikit_components_type-legacy">Legacy</label>
+            <input id="uikit_components_type-default" type="radio" name="uikit_components_type" value="components" checked>
+            <label for="uikit_components_type-default">Default</label>
+            <input id="uikit_components_type-variants" type="radio" name="uikit_components_type" value="variants">
+            <label for="uikit_components_type-variants">Variants <small>(beta)</small></label>
           </div>
           <h5>Components group prefix</h5>
           <p><small>The plugin will export `opacity`, `padding`, `border`, `border-radius`, `background-color` of the node and the `color`(first fill color) of the first visible children</small></p>
