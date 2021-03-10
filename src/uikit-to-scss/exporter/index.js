@@ -14,6 +14,9 @@ export default class Exporter{
 
   initProcessors(){
     const { uikit_components_type: componentsType } = this.settings
+
+    console.log(componentsType)
+
     this.processors.palette = new processors.palette('palette', this.settings)
     this.processors.typos = new processors.typos('typos', this.settings)
     this.processors.components = new processors[componentsType]('components', this.settings)

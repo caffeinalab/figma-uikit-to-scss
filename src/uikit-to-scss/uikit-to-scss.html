@@ -22,7 +22,6 @@
           </div>
         </div>
         <div class="Tab js-tab-panel" data-rel="uikit">
-
           <h4>Nodes selectors</h4>
           <p>
             The following settings allow the plugin to retrieve the right nodes to be exported
@@ -49,10 +48,14 @@
           <h5>Components group type</h5>
           <p><small>The plugin supports the Figma's variants too. Check the related option if you use them in your components design workflow.</small></p>
           <div class="Radio">
-            <input id="uikit_components_type-default" type="radio" name="uikit_components_type" value="components" checked>
-            <label for="uikit_components_type-default">Default</label>
-            <input id="uikit_components_type-variants" type="radio" name="uikit_components_type" value="variants">
-            <label for="uikit_components_type-variants">Variants <small>(beta)</small></label>
+            <label>
+              <input type="radio" name="uikit_components_type" value="components">
+              <span>Default</span>
+            </label>
+            <label>
+              <input type="radio" name="uikit_components_type" value="variants">
+              <span>Variants <small>(beta)</small></span>
+            </label>
           </div>
           <h5>Components group prefix</h5>
           <p><small>The plugin will export `opacity`, `padding`, `border`, `border-radius`, `background-color` of the node and the `color`(first fill color) of the first visible children</small></p>

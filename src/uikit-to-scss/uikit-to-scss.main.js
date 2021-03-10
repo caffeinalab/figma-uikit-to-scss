@@ -3,8 +3,7 @@ import {getSettings, saveSettings} from './settings'
 import {sendToUI} from './utils/communication'
 
 async function init(){
-  const settings = await getSettings()
- 
+  const settings = await getSettings() 
   const pages = figma.root.children.map(page => {
     return {id: page.id, name: page.name}
   })
@@ -22,7 +21,7 @@ async function init(){
         saveSettings(message.data)
       break
       case 'quit':
-        figma.closePlugin();
+        figma.closePlugin()
       break
     }
   }

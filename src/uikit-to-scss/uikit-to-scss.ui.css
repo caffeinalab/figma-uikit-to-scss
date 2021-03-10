@@ -185,16 +185,22 @@ footer button{
   font-size: 12px;
 }
 
-.Radio > * {
-  flex: 0;
-}
-
-.Radio > label {
-  margin: 0 20px 0 8px;
-}
-
-.Radio > input {
+.Radio label {
+  display: flex;
   height: 14px;
-  flex-basis: 14px;
+  margin: 0;
+}
+
+.Radio label + label {
+  margin-left: 20px;
+}
+
+.Radio input {
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
+}
+
+.Radio span {
+  margin-left: 4px;
 }
