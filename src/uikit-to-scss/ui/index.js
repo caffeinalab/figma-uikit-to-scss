@@ -40,11 +40,17 @@ export default class UI extends Component{
     this.ui.pages.innerHTML = checkboxes
   }
 
-  updateSettings(settings){
+  updateSettings(settings){    
     Object.entries(settings).forEach(([key,value]) => {
-      const input = qs(`input[name="${key}"`)
-      if(input){
-        input.value = value
+      const input = qsa(`input[name="${key}"`)
+      if(input && input.length) {
+        input.forEach(el => {
+          if(el.type === 'radio') {
+              el.checked = el.value === value
+          } else {
+            el.value = value
+          }            
+        })
       }
     })
   }
