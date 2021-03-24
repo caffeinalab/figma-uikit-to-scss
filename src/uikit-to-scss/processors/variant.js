@@ -1,6 +1,7 @@
 import BaseProcessor from './base'
 import normalizeValues from '../utils/normalize-values'
 import traverseNode from '../utils/traverse-node'
+import { variantPropsOrder } from '../config'
 const { getColor, getBorder, getBorderRadius, getPadding } = normalizeValues
 
 const attributes = {
@@ -15,6 +16,11 @@ const attributes = {
       : null
     return visibleChild ? getColor(visibleChild.fills) : 'inherit'
   }
+}
+
+const getPropIndex = (prop) => {
+  const [key] = prop.split('=')
+  return variantPropsOrder.indexOf(key.trim())
 }
 
 export default class VariantProcessor extends BaseProcessor{
@@ -36,11 +42,16 @@ export default class VariantProcessor extends BaseProcessor{
   }
 
   getAttribute(node, name, filter) {
-    const id = node.name.split(',').map(entry => {
-      const equalSignIndex = entry.indexOf('=')
-      const frag = (equalSignIndex > -1) ? entry.substring(equalSignIndex + 1) : entry
-      return frag.toLowerCase()
-    }).join('-')
+    const id = node.name
+      .toLowerCase()
+      .split(',')
+      .sort((a, b) => getPropIndex(a) - getPropIndex(b))
+      .map(entry => {
+        const equalSignIndex = entry.indexOf('=')
+        const frag = (equalSignIndex > -1) ? entry.substring(equalSignIndex + 1) : entry
+        return frag
+      })    
+      .join('-')    
 
     return { [`${id}-${name}`]: filter(node) }
   }

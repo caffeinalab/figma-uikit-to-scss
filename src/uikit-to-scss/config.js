@@ -4,6 +4,9 @@ import ComponentProcessor from './processors/component'
 import VariantProcessor from './processors/variant'
 
 export const uiBreakPoints = ['mobile', 'tablet', 'desktop']
+
+export const variantPropsOrder = ['style', 'state', 'size']
+
 export const componentStates = [
   'default',
   'hover',

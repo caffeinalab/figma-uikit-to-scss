@@ -15,7 +15,7 @@ function saveFile({fileName, content}){
 }
 
 onmessage = event => {
-  // console.log('[UI] from main -> ', event
+  // console.log('[UI] from main -> ', event)
   let message = event.data.pluginMessage;
   switch(message.type){
     case 'initialData':
